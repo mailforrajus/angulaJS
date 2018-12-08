@@ -1,0 +1,76 @@
+	child.component
+	-------------------
+	import { Component,Input, Output, EventEmitter } 
+    from "@angular/core";
+@Component({
+selector:"child",
+templateUrl:"./child.component.html"
+})
+export class childComponent{
+@Input('_id') p_id;
+@Input('_name') p_name;
+@Input('_cost') p_cost;
+
+@Output() sendData:EventEmitter<any> 
+            = new EventEmitter();
+/*
+EventEmitter is the Predefined Event
+EventEmitter class available in @angular/core
+EventEmitter helps to share the data 
+from childComponent to parentComponent
+*/
+
+public clickMe():any{
+this.sendData.emit(this.p_id+"...."+
+                  this.p_name+"...."+
+                  this.p_cost);
+//emit() is the predefined function
+/*emit() function used to fire the @output()
+related event*/
+};
+};
+----------------------------------------------
+child.html
+
+<h2>Product ID:<span style="color: red">{{p_id}}</span></h2>
+<h2>Product Name:<span style="color: red">{{p_name}}</span></h2>
+<h2>Product Cost:<span style="color: red">{{p_cost}}</span></h2>
+<button (click)="clickMe()"><b>Send</b></button>
+<hr style="height: 2px;background-color: gray">
+
+---------------------------------------------------------
+
+parent.compoonent.html
+
+import { Component } from "@angular/core";
+@Component({
+    selector:"parent",
+    templateUrl:"./parent.component.html"
+})
+export class parentComponent{
+    private my_array:Array<any>=[
+        {"p_id":111,"p_name":"p_one","p_cost":10000},
+        {"p_id":222,"p_name":"p_two","p_cost":20000},
+        {"p_id":333,"p_name":"p_three","p_cost":30000},
+        {"p_id":444,"p_name":"p_four","p_cost":40000},
+        {"p_id":555,"p_name":"p_five","p_cost":50000}
+    ];
+    public my_fun(data):any{
+        alert(data);
+    };
+};
+}
+
+---------------------------------
+parent.html
+<child 
+[_id]="x.p_id"
+[_name]="x.p_name"
+[_cost]="x.p_cost"
+(sendData)="my_fun($event)"
+*ngFor="let x of my_array"></child>
+
+<!--
+    we will use [] brackets for @Input() property
+    we will use () for @Output() property
+-->
