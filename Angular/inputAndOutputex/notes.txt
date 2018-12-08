@@ -1,0 +1,138 @@
+	 **** Communication Between Components ****
+
+	- Simple TypeScript class behaves like Component.
+
+	- Component Acting as Interface between View
+	  and Service.
+
+	- Because Of Components Code Reusability is high
+	  in Angular7 Applications.
+
+	- Angular7 Applications called as Component
+	  Based Applications.
+
+	- We Can Create more than one Component in Angular
+	  Application.
+
+	- We Can Provide Communication Between Components
+          in 4 ways.
+		@Input()
+		@Output()
+		@ViewChild()
+		@ViewChildren()
+
+
+		****** @Input() ******
+
+
+	- @Input() Decorator used to transfer the Data
+	  From ParentComponent to ChildComponent.
+
+	- Input is the Predefined Class in Angular
+
+	- Input Class avilable in @angular/core package.
+
+
+Steps to Transfer the Data From Parent Component 
+to Child Component
+
+
+Step 1.
+	create the childComponent with 
+	@Input() Decorator
+	Properties
+
+******************************************
+InputAndOutputEx
+	      src
+	        app
+	          components
+		     child.component.ts
+		     child.component.html
+******************************************
+
+Step 2.
+	create the parentComponent 
+	with Application Data.
+
+
+********************************************
+InputAndOutputEx
+	      src
+	        app
+	          components
+		     parent.component.ts
+		     parent.component.html
+********************************************
+
+
+Step 3.
+	call the childComponent selector 
+	in parentComponent
+	template.
+
+
+Step 4.
+	bootstrap the parentComponent
+
+
+		***** Output() *****
+
+	- @Output() Decorator used to share the data from
+	  childComponent to parentComponent.
+
+	- Output is the Predefined Class.
+
+	- Output class available in @angular/core package.
+
+Steps to Transfer the Data From ChildComponent to 
+ParentComponent
+
+
+Step 1.
+	declare the @Output() Decorator in childComponent
+
+
+Step 2.
+	fire the event.
+
+
+Step 3.
+	map the event in 
+	parentComponent external Template
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
